@@ -1,0 +1,52 @@
+﻿<Page x:Class="PoeHelper.Source.View.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:local="clr-namespace:PoeHelper.Source.View"
+      xmlns:localVM="clr-namespace:PoeHelper.Source.ViewModel"
+	  mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="300"
+      Visibility="{Binding PageVisibility}">
+	<i:Interaction.Triggers>
+		<i:EventTrigger EventName="Loaded">
+			<i:InvokeCommandAction Command="{Binding StartLocatingTimer}"
+								   CommandParameter="{Binding}"/>
+		</i:EventTrigger>
+	</i:Interaction.Triggers>
+	<Page.DataContext>
+		<localVM:MainPage_ViewModel />
+	</Page.DataContext>
+
+	<Canvas>
+		<Grid Style="{StaticResource MainGridStyle}">
+			<Border Width="200"
+					Height="800"
+					Margin="0 20 0 0"
+					Background="{StaticResource PrimaryBackgroundBrush}"
+					BorderBrush="{StaticResource PrimaryBorderBrush}"
+					BorderThickness="0 1 1 1"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					CornerRadius="0 20 20 0">
+				<TabControl Background="Transparent"
+							Visibility="Hidden">
+					<TabItem Header="1" />
+					<TabItem Header="2" />
+				</TabControl>
+			</Border>
+			<Border Style="{StaticResource ShowContentButton}">
+				<Label	Content="{Binding ShowButtonContent}"
+						Style="{StaticResource ShowButtonLabel}"
+						/>
+			</Border>
+			
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="MouseEnter">
+					<i:CallMethodAction MethodName="SetMouseOverTrue" />
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Grid>
+	</Canvas>
+</Page>

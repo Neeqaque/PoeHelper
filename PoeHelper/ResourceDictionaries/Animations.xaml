@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Storyboard Storyboard.TargetProperty="(Canvas.Left)"
+				x:Key="ExpandAnimation">
+		<DoubleAnimation  From="-200"
+						  To="0"
+						  Duration="0:0:.1"/>
+	</Storyboard>
+
+	<Storyboard Storyboard.TargetProperty="(Canvas.Left)"
+				x:Key="CollapseAnimation">
+		<DoubleAnimation	From="0"
+							To="-200"
+							Duration="0:0:.1"/>
+	</Storyboard>
+
+	<BooleanAnimationUsingKeyFrames x:Key="SetTrueAnimation">
+		<DiscreteBooleanKeyFrame Value="True" KeyTime="0:0:.1" />
+	</BooleanAnimationUsingKeyFrames>
+
+	<BooleanAnimationUsingKeyFrames x:Key="SetFalseAnimation">
+		<DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:.1" />
+	</BooleanAnimationUsingKeyFrames>
+
+</ResourceDictionary>

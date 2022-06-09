@@ -1,0 +1,51 @@
+﻿<Window x:Class="PoeHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PoeHelper"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        mc:Ignorable="d"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        Width="300"
+        WindowStartupLocation="Manual"
+        Left="0"
+        Top="0"
+        Topmost="True"
+        WindowStyle="None"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        Loaded="Window_Loaded"
+        AllowsTransparency="True">
+    <Grid Background="Transparent">
+		<Frame Source="Source/View/MainPage.xaml" />
+
+		<tb:TaskbarIcon ToolTipText="PoE Helper"
+						x:Name="TaskbarIcon"
+                        IconSource="Resources/favicon.ico"
+						PopupActivation="LeftOrRightClick">
+			<tb:TaskbarIcon.TrayPopup>
+				<Border BorderThickness="1"
+						BorderBrush="#CCCCCC"
+						Cursor="Hand"
+						Background="#F0F0F0">
+					<Button Content="Exit"
+							Margin="1"
+							x:Name="TaskbarExit_Button"
+							Click="TaskbarExit_Button_Click"
+							/>
+					<Border.Resources>
+						<Style TargetType="Button">
+							<Setter Property="Background" Value="#F0F0F0" />
+							<Setter Property="Height" Value="20" />
+							<Setter Property="BorderThickness" Value="0" />
+							<Setter Property="HorizontalContentAlignment" Value="Left" />
+							<Setter Property="Padding" Value="28 0 40 0" />
+						</Style>
+					</Border.Resources>
+				</Border>
+			</tb:TaskbarIcon.TrayPopup>
+		</tb:TaskbarIcon>
+    </Grid>
+    
+</Window>

@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Style TargetType="Label" x:Key="ShowButtonLabel">
+		<Setter Property="FontSize"  Value="12"/>
+		<Setter Property="Foreground" Value="{StaticResource IconTextBrush}" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+	</Style>
+
+	<Style TargetType="Border" x:Key="ShowContentButton">
+		<Setter Property="Margin" Value="198 200 0 0" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="Width" Value="20"/>
+		<Setter Property="Height" Value="60"/>
+		<Setter Property="Background" Value="{StaticResource PrimaryBackgroundBrush}"/>
+		<Setter Property="CornerRadius" Value="0 11 11 0"/>
+		<Setter Property="BorderThickness" Value="0 1 1 1"/>
+		<Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderBrush}" />
+	</Style>
+
+	<Style TargetType="Grid" x:Key="MainGridStyle">
+		<Setter Property="Canvas.Left" Value="-200" />
+
+		<Style.Triggers>
+			<DataTrigger Binding="{Binding IsMouseOver}" Value="True">
+				<DataTrigger.EnterActions>
+					<BeginStoryboard Storyboard="{StaticResource ExpandAnimation}" />
+				</DataTrigger.EnterActions>
+			</DataTrigger>
+			<DataTrigger Binding="{Binding IsSelected}" Value="True">
+				<DataTrigger.EnterActions>
+					<BeginStoryboard Storyboard="{StaticResource ExpandAnimation}" />
+				</DataTrigger.EnterActions>
+			</DataTrigger>
+			<MultiDataTrigger>
+				<MultiDataTrigger.Conditions>
+					<Condition Binding="{Binding IsMouseOver}" Value="False" />
+					<Condition Binding="{Binding IsSelected}" Value="False" />
+				</MultiDataTrigger.Conditions>
+				<MultiDataTrigger.EnterActions>
+					<BeginStoryboard Storyboard="{StaticResource CollapseAnimation}" />
+				</MultiDataTrigger.EnterActions>
+			</MultiDataTrigger>
+		</Style.Triggers>
+	</Style>
+</ResourceDictionary>
